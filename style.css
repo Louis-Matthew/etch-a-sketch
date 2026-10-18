@@ -14,9 +14,9 @@ h1{
 .container{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    flex: auto;
-    gap: 3px;
     margin-top: 50px;
 }
+
 
