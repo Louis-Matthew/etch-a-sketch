@@ -1,24 +1,44 @@
 const container = document.querySelector(".container");
+const generateButton = document.querySelector("#btn");
 
-for (let i = 0; i < 16; i++) {
-  for (let j = 0; j < 16; j++) {
-    const div = document.createElement("div");
-    div.classList.add("box");
-    div.setAttribute(
-      "style",
-      "background-color: lightgrey; min-width: 20px; min-height: 20px; border: 2px solid white",
-    );
-    container.appendChild(div);
+function generateGrid(gridDimension = 16) {
+  container.innerHTML = "";
+  for (let i = 0; i < gridDimension; i++) {
+    for (let j = 0; j < gridDimension; j++) {
+      const div = document.createElement("div");
+      div.classList.add("box");
+
+      div.addEventListener("mouseenter", () => {
+        div.style.backgroundColor = "black";
+      });
+
+      container.appendChild(div);
+    }
+
+    const nextLineDiv = document.createElement("div");
+    nextLineDiv.setAttribute("style", "flex-basis:100%; height:0;");
+    container.appendChild(nextLineDiv);
   }
-
-  const nextLineDiv = document.createElement("div");
-  nextLineDiv.setAttribute("style", "flex-basis:100%; height:0;");
-  container.appendChild(nextLineDiv);
 }
 
-const divs = document.querySelectorAll(".box");
-divs.forEach((div) => {
-  div.addEventListener("mouseenter", () => {
-    div.style.backgroundColor = "black";
-  });
+generateButton.addEventListener("click", () => {
+  const userInput = prompt("Enter the number of squares per side(1-100):");
+
+  if (userInput === null) {
+    return;
+  }
+  const gridDimension = Number(userInput);
+
+  if (
+    !Number.isInteger(gridDimension) ||
+    gridDimension < 0 ||
+    gridDimension > 100
+  ) {
+    alert("Please enter a whole numnber between 1 and 100");
+    return;
+  }
+
+  generateGrid(gridDimension);
 });
+
+generateGrid();
