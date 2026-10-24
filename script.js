@@ -3,10 +3,16 @@ const generateButton = document.querySelector("#btn");
 
 function generateGrid(gridDimension = 16) {
   container.innerHTML = "";
+  const containerWidth = container.clientWidth;
+  const boxSize = Math.min(20, containerWidth / gridDimension);
+
   for (let i = 0; i < gridDimension; i++) {
     for (let j = 0; j < gridDimension; j++) {
       const div = document.createElement("div");
       div.classList.add("box");
+
+      div.style.width = `${boxSize}px`;
+      div.style.height = `${boxSize}px`;
 
       div.addEventListener("mouseenter", () => {
         div.style.backgroundColor = "black";
