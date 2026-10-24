@@ -31,7 +31,7 @@ generateButton.addEventListener("click", () => {
 
   if (
     !Number.isInteger(gridDimension) ||
-    gridDimension < 0 ||
+    gridDimension < 1 ||
     gridDimension > 100
   ) {
     alert("Please enter a whole numnber between 1 and 100");
