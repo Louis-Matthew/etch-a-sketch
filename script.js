@@ -14,8 +14,14 @@ function generateGrid(gridDimension = 16) {
       div.style.width = `${boxSize}px`;
       div.style.height = `${boxSize}px`;
 
+      let opacity = 0.1;
       div.addEventListener("mouseenter", () => {
-        div.style.backgroundColor = "black";
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        div.style.backgroundColor = `rgb(${r},${g},${b},${opacity})`;
+
+        opacity = Math.min(1, opacity + 0.1);
       });
 
       container.appendChild(div);
@@ -48,3 +54,10 @@ generateButton.addEventListener("click", () => {
 });
 
 generateGrid();
+
+function getRandomRgb() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
