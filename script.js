@@ -19,7 +19,7 @@ function generateGrid(gridDimension = 16) {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
-        div.style.backgroundColor = `rgb(${r},${g},${b},${opacity})`;
+        div.style.backgroundColor = `rgba(${r},${g},${b},${opacity})`;
 
         opacity = Math.min(1, opacity + 0.1);
       });
